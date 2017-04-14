@@ -2,11 +2,9 @@ FROM alpine:3.5
 
 LABEL maintainer "matthias.balke@googlemail.com"
 
-# update apk index cache
 # check which package provides which command
 # https://pkgs.alpinelinux.org/contents
-RUN apk update
-RUN apk add \
+RUN apk --no-cache add \
     "git=2.11.1-r0" \
     "openssh=7.4_p1-r0" \
     "bash=4.3.46-r5" \
@@ -21,9 +19,6 @@ RUN apk add \
     "libgcc=6.2.1-r1" \
     "linux-headers=4.4.6-r1" \
     "shadow=4.2.1-r7"
-
-# cleanup apk index cache
-RUN rm -rf /var/cache/apk
 
 # make bash the default shell
 RUN chsh -s /bin/bash
