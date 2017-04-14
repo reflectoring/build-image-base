@@ -22,5 +22,3 @@ RUN apk --no-cache add \
 
 # make bash the default shell
 RUN chsh -s /bin/bash
-
-RUN touch ~/.profile
